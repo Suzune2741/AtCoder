@@ -1,6 +1,12 @@
 n,s,m,l = gets.split.map(&:to_i)
-
-min_price = (n / 6) * 15
-min_price += 15 if n % 6 != 0
-
-puts min_price
+ans = 1000000000000000000
+100.times do |i|
+  100.times do |j|
+    100.times do |k|
+      if i*6 + j*8 + k*12 >= n
+        ans = [ans, i*s + j*m +k*l].min
+      end
+    end
+  end
+end
+puts ans
