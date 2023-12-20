@@ -1,12 +1,15 @@
-#TLEする
-nq = gets.split().map(&:to_i)
+n,q = gets.split().map(&:to_i)
 vis = gets.split().map(&:to_i)
-
-nq[1].times do |i|
-    ans=0
-    day = gets.split().map(&:to_i)
-    (day[0]-1).upto(day[1]-1) do |j|
-        ans+=vis[j]
-    end
-    puts ans
+s =[]
+e = []
+q.times do |i|
+    s[i],e[i] = gets.split().map(&:to_i)
+end
+ans = []
+ans[0] = 0
+(1..n).each do |i|
+    ans[i] = ans[i-1] + vis[i-1]
+end
+q.times do |i|
+    puts ans[e[i]] - ans[s[i]-1]
 end
