@@ -1,12 +1,13 @@
-n,y = gets.split.map(&:to_i)
-p (y%10000)/1000
-mil = y/10000
+n, y = gets.split.map(&:to_i)
 
-if mil<n
-    if (y%10000)/1000 == n- mil
-        puts "#{mil} 0 #{n-mil}"
-    else
-        
+(0..n).each do |i|
+  (0..(n - i)).each do |j|
+    k = n - i - j
+    if i * 10_000 + j * 5_000 + k * 1_000 == y
+        print "#{i} #{j} #{k} "
+        exit
     end
+  end
 end
 
+puts '-1 -1 -1'
