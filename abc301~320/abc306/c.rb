@@ -1,14 +1,12 @@
 n=gets.to_i
-ai = gets.split.map(&:to_i)
-counter = Array.new(n) { Array.new(2,0) }
-n.times do |l|
-    li= ai.index(l+1)
-    ai[li]=0
+a = gets.split.map(&:to_i)
+count = {}
+ans = []
+a.each do |i|
+    count[i] ||= 0
+    count[i] += 1
+    if count[i] == 2
+        ans << i
+    end
 end
-
-ai=ai.uniq.reverse
-ai.pop
-ai=ai.reverse
-ai.each do |x|
-    print "#{x} "
-end
+puts ans.join(" ")
