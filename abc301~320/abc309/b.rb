@@ -1,22 +1,34 @@
 n = gets.to_i
-map=Array.new(n-1){Array.new(n-1)}
-nmap=Array.new(n-1){Array.new(n-1)}
+map=[]
+nmap=Array.new(n).map{Array.new(n,"")}
 
 n.times do |i|
-    map[i] = gets.split("").map(&:to_i)
+    map[i] = gets.chomp.split("")
 end
+
 n.times do |i|
     n.times do |j|
-        if i==0
-            nmap[i][0] = map[1][0]
-            nmap[i][j] = map[i][j+1]
-        elsif i == n-1
-            #nmap[n-1][n-1] = map[n-2][n-1]
-            nmap[i][j] = map[i][j-1]
+        if j == 0 || j == n-1 || i == 0 || i == n-1
+            if i == 0 &&j<n-1
+                nmap[i][j+1] = map[i][j]
+            end
+            if i<n-1 && j == n-1
+                nmap[i+1][j] = map[i][j]
+            end
+            if i == n-1 && j>0
+                nmap[i][j-1] = map[i][j]
+            end
+            if i>0 && j == 0
+                nmap[i-1][j] = map[i][j]
+            end
         else
-            #nmap[]
+            nmap[i][j] = map[i][j]
         end
     end
 end
-p map
-p nmap
+n.times do |i|
+    n.times do |j|
+        print nmap[i][j]
+    end
+    puts
+end
