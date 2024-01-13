@@ -1,15 +1,15 @@
 n = gets.to_i
-s=[]
-count=0
+hash = {}
 n.times do |i|
-    s1 = gets.chomp!
-    s2 = s1.reverse
-    if !s.include?(s1)  
-        if !s.include?(s2) 
-            s[count] = s1
-            count+=1
+    s = gets.chomp
+    if hash[s] != nil || hash[s.reverse] != nil
+        if hash[s.reverse] != nil
+            hash[s.reverse] += 1
+        else
+            hash[s] += 1
         end
+    else
+        hash[s] = 1
     end
 end
-
-p count
+puts hash.length
