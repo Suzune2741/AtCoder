@@ -1,15 +1,9 @@
-n = gets.to_i
-a = gets.split.map(&:to_i)
-x = gets.to_i
-sum = a.sum
-num = x/sum
-sum *= num
-ans = num * n
-a.each do |i|
-  sum += i
-  ans += 1
-  if sum > x
-    break
+a,b,c = gets.split.map(&:to_i)
+
+(a..b).each do |i|
+  if i/c == i.to_f/c
+    puts i
+    exit
   end
 end
-puts ans
+puts -1
