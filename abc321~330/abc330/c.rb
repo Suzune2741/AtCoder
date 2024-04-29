@@ -1,7 +1,11 @@
-d = gets.to_i
-num1 = Math.sqrt(d)
-num2 = Math.sqrt(d - num1 ** 2)
-puts "#{num1} #{num2}"
-puts "#{num1.round} #{num2.round}"
-puts num1.round ** 2 + num2.round ** 2 - d
-puts (num1 ** 2 + num2 ** 2 - d).abs
+D = gets.to_i
+ans = 100000000000000
+
+(0..Math.sqrt(D)).each do |i|
+    j = Math.sqrt((D - i * i).abs).to_i
+    ans = [ans, (i * i + j * j - D).abs].min
+    j += 1
+    ans = [ans, (i * i + j * j - D).abs].min
+end
+
+puts ans
